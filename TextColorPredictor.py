@@ -60,13 +60,13 @@ class Neuron:
         self.output = self.sigmoid(sumOutput)
 
     def backPropagate(self):
-        self.gradient = self.error * self.dSigmoid(self.output);
+        self.gradient = self.error * self.dSigmoid(self.output)
         for dendron in self.dendrons:
             dendron.dWeight = Neuron.eta * (
-            dendron.connectedNeuron.output * self.gradient) + self.alpha * dendron.dWeight;
-            dendron.weight = dendron.weight + dendron.dWeight;
-            dendron.connectedNeuron.addError(dendron.weight * self.gradient);
-        self.error = 0;
+            dendron.connectedNeuron.output * self.gradient) + self.alpha * dendron.dWeight
+            dendron.weight = dendron.weight + dendron.dWeight
+            dendron.connectedNeuron.addError(dendron.weight * self.gradient)
+        self.error = 0
 
 
 class Network:
@@ -90,7 +90,7 @@ class Network:
     def feedForword(self):
         for layer in self.layers[1:]:
             for neuron in layer:
-                neuron.feedForword();
+                neuron.feedForword()
 
     def backPropagate(self, target):
         for i in range(len(target)):
