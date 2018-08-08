@@ -6,7 +6,7 @@ import keras
 from keras.models import Sequential
 from keras.layers import *
 
-RUN_NAME = "run 1 with 3_3_1 node"
+RUN_NAME = "run 1 with 3_3_4 node"
 
 def main():
 
@@ -20,6 +20,7 @@ def main():
     model = Sequential()
     model.add(Dense(3, input_dim=3, activation='relu', name='layer_1'))
     model.add(Dense(3, activation='relu', name='layer_2'))
+    #model.add(Dense(3, activation='relu', name='layer_3'))
     model.add(Dense(1, activation='linear', name='output_layer'))
     model.compile(loss='mean_squared_error', optimizer='adam')
 
@@ -34,7 +35,7 @@ def main():
     model.fit(
         X,
         Y,
-        epochs=50,
+        epochs=100,
         shuffle=True,
         verbose=2,
         callbacks=[logger]
